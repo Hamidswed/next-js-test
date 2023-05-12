@@ -9,7 +9,7 @@ const ToDoList = () => {
   const fetchTasks = async () => {
     const response = await fetch("http://localhost:8000/tasks");
     const data = await response.json();
-    setTasks(data.tasks);
+    setTasks(data);
   };
   useEffect(() => {
     fetchTasks();
@@ -17,7 +17,7 @@ const ToDoList = () => {
 
   return (
     <div>
-      {tasks?.length === 0 && <p>Please add a task!</p>}
+      {tasks?.length === 0 && <p className={styles.ptag}>Please add a task!</p>}
       <div className={styles.todoList}>
         {tasks?.map((item, index) => {
           return <ToDoItem key={index + 1} task={item} />;
