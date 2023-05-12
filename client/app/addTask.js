@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
-import styles from "./page.module.css"
+import styles from "./page.module.css";
 
 const AddTask = () => {
   const [task, setTask] = useState({ name: "", date: "" });
+  const [error, setError] = useState(false);
   const addNameHandler = (e) => {
     setTask({ ...task, name: e.target.value });
   };
@@ -12,6 +13,11 @@ const AddTask = () => {
   };
 
   const addTask = async () => {
+    if (task.name === "") {
+      setError(true);
+      return;
+    }
+    setError(false);
     await fetch("http://localhost:8000/tasks", {
       method: "POST",
       headers: {
@@ -23,7 +29,14 @@ const AddTask = () => {
   };
   return (
     <div className={styles.addTask}>
-      <input type="text" onChange={addNameHandler} value={task.name} />
+      <input
+        type="text"
+        onChange={addNameHandler}
+        value={task.name}
+        placeholder={error ? "Please add a task..." : null}
+        style={error ? { border: "1px solid red" } : null}
+        requsted
+      />
       <input type="date" onChange={addDateHandler} value={task.date} />
       <button onClick={addTask}>Add</button>
     </div>
