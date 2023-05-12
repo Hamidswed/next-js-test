@@ -18,7 +18,7 @@ const AddTask = () => {
       return;
     }
     setError(false);
-    await fetch("http://localhost:8000/tasks", {
+    await fetch("https://todo-backend-u5sb.onrender.com/tasks", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

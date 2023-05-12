@@ -7,7 +7,7 @@ const ToDoList = () => {
   const [tasks, setTasks] = useState();
 
   const fetchTasks = async () => {
-    const response = await fetch("http://localhost:8000/tasks");
+    const response = await fetch("https://todo-backend-u5sb.onrender.com/tasks");
     const data = await response.json();
     setTasks(data);
   };

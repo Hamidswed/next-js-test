@@ -2,7 +2,7 @@ import styles from "./page.module.css";
 
 const ToDoItem = ({ task }) => {
   const deleteTask = async () => {
-    await fetch(`http://localhost:8000/tasks/${task.name}`, {
+    await fetch(`https://todo-backend-u5sb.onrender.com/tasks/${task.name}`, {
       method: "DELETE",
     });
   };
