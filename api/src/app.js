@@ -4,7 +4,7 @@ const app = Express();
 app.use(Express.json());
 app.use(cors());
 
-const tasks = [];
+let tasks = [];
 
 app.post("/tasks", (req, res) => {
   const newTask = req.body;
@@ -16,12 +16,10 @@ app.get("/tasks", (req, res) => {
   res.json(tasks);
 });
 
-app.delete("/task/:id", (req, res) => {
-  const {id} = req.params;
-  const result = tasks.filter((item)=>item.name!==id)
-  console.log(result);
-  console.log(req.params)
-  res.json(result);
+app.delete("/tasks/:id", (req, res) => {
+  const { id } = req.params;
+  tasks = tasks.filter((item) => item.name !== id);
+  res.json(tasks);
 });
 
 const port = 8000;
