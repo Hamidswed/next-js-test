@@ -1,6 +1,12 @@
+import styles from './page.module.css'
+
 const ToDoItem=({task})=>{
   return (
-    <li>Name: {task.name} -- Date: {task.date}</li>
+    <div className={styles.todoItem}>
+      <p>{task.name}</p>
+      <p>{task.date}</p>
+      <button type='button'>Delete</button>
+    </div>
   )
 }
 export default ToDoItem

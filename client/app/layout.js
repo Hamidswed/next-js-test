@@ -1,6 +1,4 @@
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import "./general.css";
 
 export const metadata = {
   title: "To Do App",
@@ -10,7 +8,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <h1>To Do App</h1>
         {children}
       </body>

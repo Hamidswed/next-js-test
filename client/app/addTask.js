@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import styles from "./page.module.css"
 
 const AddTask = () => {
   const [task, setTask] = useState({ name: "", date: "" });
@@ -21,7 +22,7 @@ const AddTask = () => {
     setTask({ name: "", date: "" });
   };
   return (
-    <div>
+    <div className={styles.addTask}>
       <input type="text" onChange={addNameHandler} value={task.name} />
       <input type="date" onChange={addDateHandler} value={task.date} />
       <button onClick={addTask}>Add</button>

@@ -1,0 +1,16 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* html{
+  font-size: 62.5%;
+} */
+body{
+  height: 100vh;
+  background-color: #FFB08F;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
