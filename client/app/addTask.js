@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
 import styles from "./page.module.css";
+import { url } from "./page";
 
 const AddTask = () => {
-  const [task, setTask] = useState({ name: "", date: "" });
+  const [task, setTask] = useState({ name: "", date: "", isDone: false });
   const [error, setError] = useState(false);
   const addNameHandler = (e) => {
     setTask({ ...task, name: e.target.value });
@@ -18,7 +19,7 @@ const AddTask = () => {
       return;
     }
     setError(false);
-    await fetch("https://todo-backend-u5sb.onrender.com/tasks", {
+    await fetch(`${url}/tasks`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +36,7 @@ const AddTask = () => {
         value={task.name}
         placeholder={error ? "Please add a task..." : null}
         style={error ? { border: "1px solid red" } : null}
-        requsted
+        requsted="true"
       />
       <input type="date" onChange={addDateHandler} value={task.date} />
       <button onClick={addTask}>Add</button>

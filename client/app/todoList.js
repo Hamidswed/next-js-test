@@ -2,18 +2,20 @@
 import { useEffect, useState } from "react";
 import ToDoItem from "./todoItem";
 import styles from "./page.module.css";
+import { url } from "./page";
 
 const ToDoList = () => {
   const [tasks, setTasks] = useState();
 
   const fetchTasks = async () => {
-    const response = await fetch("https://todo-backend-u5sb.onrender.com/tasks");
+    const response = await fetch(`${url}/tasks`);
     const data = await response.json();
     setTasks(data);
   };
   useEffect(() => {
     fetchTasks();
   }, [tasks]);
+
 
   return (
     <div>
