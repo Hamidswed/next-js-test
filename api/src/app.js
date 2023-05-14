@@ -16,9 +16,17 @@ app.get("/tasks", (req, res) => {
   res.json(tasks);
 });
 
-app.delete("/tasks/:id", (req, res) => {
-  const { id } = req.params;
-  tasks = tasks.filter((item) => item.name !== id);
+app.delete("/tasks/:name", (req, res) => {
+  const { name } = req.params;
+  tasks = tasks.filter((item) => item.name !== name);
+  res.json(tasks);
+});
+
+app.put("/tasks/:name", (req, res) => {
+  const { name } = req.params;
+  const task = req.body;
+  const index = tasks.findIndex((item) => item.name === name);
+  tasks[index] = task;
   res.json(tasks);
 });
 
