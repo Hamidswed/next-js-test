@@ -1,9 +1,7 @@
-// import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 import { url } from "./page";
 
 const ToDoItem = ({ task, fetchTasks }) => {
-  // const router = useRouter();
   const deleteTask = async () => {
     await fetch(`${url}/tasks/${task.name}`, {
       method: "DELETE",
