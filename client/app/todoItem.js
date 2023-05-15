@@ -1,11 +1,14 @@
+// import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 import { url } from "./page";
 
-const ToDoItem = ({ task }) => {
+const ToDoItem = ({ task, fetchTasks }) => {
+  // const router = useRouter();
   const deleteTask = async () => {
     await fetch(`${url}/tasks/${task.name}`, {
       method: "DELETE",
     });
+    fetchTasks();
   };
 
   const checkboxHandler = async (e) => {
@@ -17,15 +20,12 @@ const ToDoItem = ({ task }) => {
       },
       body: JSON.stringify(updatedTask),
     });
+    fetchTasks();
   };
 
   return (
     <div className={styles.todoItem}>
-      <input
-        type="checkbox"
-        onChange={checkboxHandler}
-        checked={task.isDone ? true : false}
-      />
+      <input type="checkbox" onChange={checkboxHandler} checked={task.isDone} />
       <p className={task.isDone ? styles.todoItemDone : null}>{task.name}</p>
       <p>{task.date}</p>
       <button onClick={deleteTask}>Delete</button>
