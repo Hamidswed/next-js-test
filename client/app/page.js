@@ -6,8 +6,8 @@ import Image from "next/image";
 import Svg from "./../public/back.svg";
 import { useState, useEffect } from "react";
 
-// export const url = "https://todo-backend-u5sb.onrender.com";
-export const url = "http://localhost:8000";
+export const url = "https://todo-backend-u5sb.onrender.com";
+// export const url = "http://localhost:8000";
 
 export default function Home() {
   const [tasks, setTasks] = useState([]);
