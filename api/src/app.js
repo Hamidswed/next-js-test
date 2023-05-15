@@ -8,6 +8,11 @@ let tasks = [];
 
 app.post("/tasks", (req, res) => {
   const newTask = req.body;
+  const result = tasks.some((item) => item.name === newTask.name);
+  if (result) {
+    res.json("The Task is already in the list!")
+    return;
+  }
   tasks.push(newTask);
   res.json(tasks);
 });
